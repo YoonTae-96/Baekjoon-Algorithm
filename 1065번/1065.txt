@@ -1,0 +1,25 @@
+#include <stdio.h>
+int func(int n){
+    int count=0, A=0, B=0, C=0;
+    if(n<100){
+        return n;
+    }
+    else{
+        for(int i=100; i<=n; ++i){
+            A=i/100;
+            B=i/10%10;
+            C=i%10;
+            if((C-B)==(B-A)){
+                count++;
+            }
+        }
+        return count+99;
+    }
+}
+
+int main(void){
+    int input=0, ans=0;
+    scanf("%d", &input);
+    ans=func(input);
+    printf("%d", ans);
+}
