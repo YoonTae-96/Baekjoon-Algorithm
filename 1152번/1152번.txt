@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+int main(void){
+    char snt[1000000]={0,};
+    gets(snt);
+    int len, count=0;
+    len = strlen(snt); 
+    if(len==1){
+        if(snt[0]==' '){
+            printf("0\n");
+            return 0;
+        }
+    }
+    for(int i=1; i<len-1; i++){
+        if(snt[i]==' '){
+            count++;
+        }
+    }
+    printf("%d\n", count+1);
+    return 0;
+}
