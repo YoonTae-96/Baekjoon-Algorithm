@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main(void){
+    int M = 0, N = 0;
+    scanf("%d %d", &M, &N);
+    int arr[1000001] = {0};
+    arr[1] = 1;
+    for(int i = 2; i <= N; ++i){
+        for(int j = 2; i*j <= N; ++j){
+            arr[i*j] = 1;
+        }
+    }
+    for(int k = M; k <= N; ++k){
+        if(arr[k]==0) printf("%d\n", k);
+    }
+    return 0;
+}
