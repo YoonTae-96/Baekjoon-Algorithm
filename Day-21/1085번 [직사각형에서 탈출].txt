@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main(void){
+    int x = 0, y = 0, w = 0, h = 0;
+    int temp_x = 0, temp_y = 0;
+    scanf("%d %d %d %d", &x, &y, &w, &h);
+    temp_x = x <= w - x ? x : w - x;
+    temp_y = y <= h - y ? y : h - y;
+    if(temp_x <= temp_y) printf("%d", temp_x);
+    else if(temp_y < temp_x) printf("%d", temp_y);
+    return 0;
+}
