@@ -1,0 +1,14 @@
+#include <stdio.h>
+#define pi 3.14159265359
+
+int main(void){
+    int r = 0;
+    scanf("%d", &r);
+    double taxi = 0, normal = 0;
+    
+    taxi = (double)r*r*2;
+    normal = (double)r*r*pi;
+
+    printf("%.6lf\n%.6lf", normal, taxi);
+    return 0;
+}
