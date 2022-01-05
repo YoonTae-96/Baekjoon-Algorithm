@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main(void){
+    int T = 0, n =0;
+    int arr[10001] = {0};
+    int arr[1] = 1;
+    for(int i=2; i<10001; ++i){
+        for(int j=2; i*j<10001; ++j){
+            arr[i*j] = 1;
+        }
+    }
+    
+    scanf("%d", &T);
+    for(int k=0; k<T; ++k){
+        scanf("%d", &n);
+        for(int p=n/2; p>0; --p){
+            if(arr[p]!=1 && arr[n-p]!=1){
+                printf("%d %d", p, n-p);
+                break;
+            }
+        }
+    }
+    return 0;
+}
