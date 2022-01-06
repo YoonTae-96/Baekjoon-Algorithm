@@ -1,0 +1,15 @@
+#include <stdio.h>
+int factorial(int k){
+    if(k==0)
+        return 1;
+    else
+        return k * factorial(k-1);
+}
+
+int main(void){
+    int k = 0, result = 0;
+    scanf("%d", &k);
+    result = factorial(k);
+    printf("%d", result);
+    
+}
