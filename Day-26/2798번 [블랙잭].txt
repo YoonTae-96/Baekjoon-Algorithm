@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main(void){
+    int N = 0, M = 0, sum = 0, max = 0;
+    scanf("%d %d", &N, &M);
+    
+    int blackjack[100]={0,};
+    
+    for(int i=0; i<N; ++i){
+        scanf("%d", &blackjack[i]);
+    }
+    
+    for(int j=0; j<N; ++j){
+        for(int k=j+1; k<N; ++k){
+            for(int p=k+1; p<N; ++p){
+                sum = blackjack[j] + blackjack[k] + blackjack[p];
+                if(sum > max && sum <= M)
+                    max = sum;
+            }
+        }
+    }
+    printf("%d\n", max);
+    return 0;
+}
