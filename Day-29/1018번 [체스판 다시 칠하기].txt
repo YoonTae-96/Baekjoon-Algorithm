@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main(void){
+    int wide = 0, high = 0, cnt = 0;
+    int min = 32;
+    char chess_board[50][50];
+    
+    scanf("%d %d", &wide, &high);
+    
+    for(int i=0; i<wide; ++i){
+        scanf("%s", chess_board[i]);
+    }
+    
+    for(int i=0; i<wide-7; ++i){
+        for(int j=0; j<high-7; ++j){
+            cnt = 0;
+            for(int k=i; k<i+8; ++k){
+                for(int q=j; q<j+8; ++q){
+                    if((k+q)%2==1 ^ chess_board[k][q]=='B'){
+                        cnt = cnt + 1;  
+                    }
+                }     
+            }
+            cnt = 64 - cnt < cnt ? 64-cnt : cnt;
+            min = cnt < min ? cnt : min;
+        }
+    }
+    printf("%d", min);
+    return 0;
+}
