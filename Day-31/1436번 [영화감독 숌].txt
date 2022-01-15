@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main(void){
+    int title = 665;
+    int cnt = 0, N = 0;
+    scanf("%d", &N);
+    while(cnt!=N){
+        title = title + 1;
+        int temp = title;
+        while(temp>0){
+            if(temp % 1000 == 666){
+	    cnt++;
+	    break;
+	}
+            else{
+	    temp = temp / 10;
+	}
+        }
+    }
+    printf("%d", title);
+    return 0;
+}
