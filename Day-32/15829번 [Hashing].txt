@@ -1,0 +1,16 @@
+#include <stdio.h>
+#define M 1234567891
+int main(void){
+    char arr[50];
+    int L = 0;
+    long long R = 1, hash_value = 0;
+    scanf("%d %s", &L, arr);
+    
+    for(int i=0; i<L; ++i){
+        hash_value = (hash_value + (arr[i]-'a'+1) * R) % M;
+        R = (R*31) % M;
+    }
+    
+    printf("%lld", hash_value);
+    return 0;
+}
