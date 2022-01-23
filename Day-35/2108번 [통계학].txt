@@ -1,0 +1,84 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int cnt[8001] = { 0, };
+
+typedef struct {
+    int x;
+}BCML;
+
+int compare(const void* first, const void* second) {
+    BCML* a = (BCML*)first;
+    BCML* b = (BCML*)second;
+
+    if (a->x > b->x)
+        return 1;
+    if (a->x < b->x)
+        return -1;
+
+    return 0;
+}
+
+int maxfinder(int* arr, int size_arr) {
+    int maxV = arr[0];
+    for (int i = 0; i < size_arr; ++i)
+        if (maxV < arr[i])
+            maxV = arr[i];
+    return maxV;
+}
+int main(void) {
+    int T = 0, sum = 0, flags = 0;
+    int middle = 0, most = 0, scale = 0;
+    double mean = 0;
+
+    scanf("%d", &T);
+
+    BCML* list = malloc(T * sizeof(BCML));
+
+    for (int i = 0; i < T; ++i) {
+        scanf("%d", &list[i].x);
+        cnt[list[i].x + 4000] = cnt[list[i].x + 4000] + 1;
+    }
+
+    for (int i = 0; i < 8001; ++i) {
+        if (maxfinder(cnt, 8001) == cnt[i])
+            flags++;
+    }
+
+    for (int i = 0; i < 8001; ++i) {
+        if (flags == 1) {
+            if (maxfinder(cnt, 8001) == cnt[i]) {
+                most = i - 4000;
+                break;
+            }
+        }
+
+        else {
+            if (maxfinder(cnt, 8001) == cnt[i])
+                if (flags == 0) {
+                    most = i - 4000;
+                    break;
+                }
+                else
+                    flags = 0;
+        }
+    }
+
+    qsort(list, T, sizeof(int), compare);
+
+    for (int i = 0; i < T; ++i) {
+        sum = sum + list[i].x;
+    }
+
+    mean = (double)sum / T;
+    middle = list[(T+1) / 2 - 1].x;
+    scale = list[T - 1].x - list[0].x;
+
+    printf("%.0f\n", mean);
+    printf("%d\n", middle);
+    printf("%d\n", most);
+    printf("%d\n", scale);
+    
+    return 0;
+}
