@@ -1,0 +1,18 @@
+import sys
+
+input = sys.stdin.readline().rstrip()
+x1, y1 = map(int, input.split(' '))
+x2, y2 = map(int, input.split(' '))
+x3, y3 = map(int, input().split(' '))
+
+A, B, C = [x1, y2], [x2, y2], [x3, y3]
+
+def CCW(p1, p2, p3):
+    return (p1[0]*p2[1] + p2[0]*p3[1] + p3[0]*p1[1]) - (p2[0]*p1[1] + p3[0]*p2[1] + p1[0]*p3[1])
+
+if CCW(A, B, C) > 0:
+    print(1)
+elif CCW(A, B, C) <0:
+    print(-1)
+else:
+    print(0)
